@@ -17,13 +17,15 @@ pip install git+https://github.com/safari029/pzaif
 # Usage
 
 現状はExchangeAPI(),PublicAPI()を作成してます。
-ExchangeAPI()にはAPIキーが必要です。
+以下でimportします。
 
 ```
-import pzaif
+from pzaif import pzaif
 ```
 
 ## ExchangeAPI()
+
+ExchangeAPI()にはAPIキーが必要です。
 
 
 
