@@ -11,7 +11,7 @@ python用のZaifAPIラッパー。
 pipでインストールしてください。
 
 ```
-pip install git+https://github.com/safari029/simple_zaif
+pip install git+https://github.com/safari029/pzaif
 ```
 
 # Usage
@@ -45,4 +45,3 @@ pubapi.last_plice("btc_jpy")
 
 ## StreamingAPI
 気が向いたら作ります。
-
