@@ -5,7 +5,7 @@ def main():
               version='1.0',
               author="safari029",
               py_module='pzaif',
-              packages=find_packages("src"),
+              packages=find_packages("pzaif"),
               url=["https://github.com/safari029/pzaif"],
               install_requires=['requests'],
               )
