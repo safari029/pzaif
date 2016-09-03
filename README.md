@@ -25,12 +25,15 @@ import pzaif
 
 ## ExchangeAPI()
 
+
+
 ```
 exapi=pzaif.ExchangeAPI(key,secret)
 
 exapi.get_info()
 
-exapi.trade_history(count=3,currency_pair="btc_jpy",since="2016/01/01 00:00)　#時刻関連のパラメータはdateutilでパースされます。
+#時刻関連のパラメータはdateutilで適宜パースされます。
+exapi.trade_history(count=3,currency_pair="btc_jpy",since="2016/01/01 00:00)
 ```
 
 ## PublicAPI()
