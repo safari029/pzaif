@@ -8,7 +8,6 @@ import dateutil.parser
 import hmac
 import hashlib
 
-
 class ExchangeAPI():
 
     def __init__(self,key,secret):
