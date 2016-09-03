@@ -1,0 +1,7 @@
+### Intellij ###
+# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, WebStorm
+
+## Directory-based project format
+.idea/
+.DS_Store
+test.py
