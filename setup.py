@@ -2,7 +2,7 @@ from setuptools import setup,find_packages
 
 def main():
         setup(name='pzaif',
-              version='1.0',
+              version='1.0.1',
               author="safari029",
               packages=["pzaif"],
               url=["https://github.com/safari029/pzaif"],

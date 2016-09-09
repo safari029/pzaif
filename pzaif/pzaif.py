@@ -88,7 +88,7 @@ class ExchangeAPI():
 
         result = self.call_api(data).json()
 
-        return json
+        return result
 
 
     def cancel_order(self,order_id):
