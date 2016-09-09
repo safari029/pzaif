@@ -78,8 +78,8 @@ class ExchangeAPI():
         return result
 
 
-    def trades(self, currency_pair, action, price, amount, **kwargs):
-        data = {'method':'trades',
+    def trade(self, currency_pair, action, price, amount, **kwargs):
+        data = {'method':'trade',
                 'currency_pair': currency_pair,
                 'action': action,
                 'price': price,
