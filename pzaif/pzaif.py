@@ -14,9 +14,10 @@ class ExchangeAPI():
         """
         Initialize instance variable
         """
+        self.__session=requests.session()
         self.tapi_url="https://api.zaif.jp/tapi"
-        self.key=key
-        self.secret=secret
+        self.__key=key
+        self.__secret=secret
 
     def hmac_sha512(self,secret, message):
         sign = hmac.new(secret, message, hashlib.sha512).hexdigest()
@@ -36,13 +37,13 @@ class ExchangeAPI():
 
         # HMAC-SHA512
         sign = urllib.urlencode(data)
-        sign = self.hmac_sha512(self.secret, sign)
+        sign = self.hmac_sha512(self.__secret, sign)
 
         # headers
-        headers = {'Key': self.key,
+        headers = {'Key': self.__key,
                    'Sign': sign}
 
-        response=requests.post(self.tapi_url,data=data,headers=headers)
+        response=self.__session.post(self.tapi_url,data=data,headers=headers)
 
         return response
 
@@ -90,6 +91,13 @@ class ExchangeAPI():
 
         return result
 
+
+    def cancel_all_order(self):
+        order_list=self.active_orders()
+        order_list=order_list['return'].keys()
+
+        for id in order_list:
+            print self.cancel_order(id)
 
     def cancel_order(self,order_id):
         data = {'method': 'cancel_order',
