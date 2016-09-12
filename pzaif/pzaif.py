@@ -145,24 +145,24 @@ class PublicAPI():
         Initialize instance variable
         """
         self.api_url = "https://api.zaif.jp/api/1"
+        self.__session = requests.session()
 
     def last_price(self,currency="btc_jpy"):
         url=self.api_url+"/last_price/"+currency
-        res=requests.get(url)
+        res=self.__session.get(url)
         return res.json()
 
     def ticker(self,currency="btc_jpy"):
         url=self.api_url+"/ticker/"+currency
-        res=requests.get(url)
+        res=self.__session.get(url)
         return res.json()
 
     def trades(self,currency="btc_jpy"):
         url=self.api_url+"/trades/"+currency
-        res=requests.get(url)
+        res=self.__session.get(url)
         return res.json()
-
 
     def depth(self,currency="btc_jpy"):
         url=self.api_url+"/depth/"+currency
-        res=requests.get(url)
+        res=self.__session.get(url)
         return res.json()
