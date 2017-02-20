@@ -7,6 +7,9 @@ from datetime import datetime
 import dateutil.parser
 import hmac
 import hashlib
+import websocket
+from  websocket import WebSocketApp
+import sys
 
 class ExchangeAPI():
 
@@ -53,6 +56,13 @@ class ExchangeAPI():
         result=self.call_api({'method':'get_info'}).json()
 
         return result
+
+    def get_info2(self):
+
+        result=self.call_api({'method':'get_info2'}).json()
+
+        return result
+
 
     def trade_history(self,**kwargs):
 
@@ -166,3 +176,42 @@ class PublicAPI():
         url=self.api_url+"/depth/"+currency
         res=self.__session.get(url)
         return res.json()
+
+
+class StreamingAPI(WebSocketApp):
+
+    def __init__(self,currency_pair='btc_jpy'):
+        if currency_pair == 'btc_jpy':
+            url = 'ws://api.zaif.jp:8888/stream?currency_pair=btc_jpy'
+        elif currency_pair == 'xem_jpy':
+            url = 'ws://api.zaif.jp:8888/stream?currency_pair=xem_jpy'
+        elif currency_pair == 'mona_jpy':
+            url = 'ws://api.zaif.jp:8888/stream?currency_pair=mona_jpy'
+        elif currency_pair == 'mona_btc':
+            url = 'ws://api.zaif.jp:8888/stream?currency_pair=mona_btc'
+        else:
+            raise error
+
+        websocket.enableTrace(True)
+
+        super(StreamingAPI,self).__init__(url,
+                                          on_message = self.on_message,
+                                          on_error = self.on_error,
+                                          on_close = self.on_close)
+        self.on_open = self.on_open
+        self.run_forever()
+
+    def on_open(self,ws):
+        print "debug: open"
+
+    def on_message(self,ws,message):
+        print message
+
+    def on_error(self,ws,error):
+        print "debug: called on_error"
+        print error
+
+    def on_close(self,ws):
+        print "### closed ###"
+
+
