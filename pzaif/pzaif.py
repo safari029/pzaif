@@ -7,9 +7,7 @@ from datetime import datetime
 import dateutil.parser
 import hmac
 import hashlib
-import websocket
-from  websocket import WebSocketApp
-import sys
+
 
 class ExchangeAPI():
 
@@ -177,7 +175,7 @@ class PublicAPI():
         res=self.__session.get(url)
         return res.json()
 
-
+"""
 class StreamingAPI(WebSocketApp):
 
     def __init__(self,currency_pair='btc_jpy'):
@@ -213,5 +211,4 @@ class StreamingAPI(WebSocketApp):
 
     def on_close(self,ws):
         print "### closed ###"
-
-
+"""
